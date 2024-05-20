@@ -2,6 +2,7 @@
   "name": "dev-may",
   "main": "expo-router/entry",
   "version": "1.0.0",
+  "scheme": "devmay",
   "scripts": {
     "start": "expo start",
     "reset-project": "node ./scripts/reset-project.js",
