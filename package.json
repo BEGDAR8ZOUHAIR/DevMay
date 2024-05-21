@@ -1,7 +1,8 @@
 {
-  "name": "marketplace",
+  "name": "dev-may",
   "main": "expo-router/entry",
   "version": "1.0.0",
+  "scheme": "devmay",
   "scripts": {
     "start": "expo start",
     "reset-project": "node ./scripts/reset-project.js",
@@ -15,6 +16,7 @@
     "preset": "jest-expo"
   },
   "dependencies": {
+    "@expo-google-fonts/inter": "^0.2.3",
     "@expo/vector-icons": "^14.0.0",
     "@react-navigation/native": "^6.0.2",
     "expo": "~51.0.7",
