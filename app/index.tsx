@@ -2,12 +2,11 @@ import { StyleSheet, View, FlatList, Text } from 'react-native';
 import DayListItem from '@/components/dayListItem/DayListItem';
 import Header from '@/components/header/Header';
 import { Ionicons, Octicons } from '@expo/vector-icons';
-import { Link, useNavigation, useRouter } from "expo-router";
+import {  useNavigation } from "expo-router";
 
 const days = [...Array(24)].map((val, index) => index + 1);
 
 export default function HomeScreen() {
-  const router = useRouter();
   const navigation = useNavigation();
   return (
     <View style={styles.container}>
