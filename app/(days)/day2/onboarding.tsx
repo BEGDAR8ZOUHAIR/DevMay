@@ -187,12 +187,12 @@ const styles = StyleSheet.create({
   // steps
   stepIndicatorContainer: {
     flexDirection: 'row',
-    gap: 8,
+    gap: 10,
     marginHorizontal: 15,
   },
   stepIndicator: {
     flex: 1,
-    height: 3,
+    height: 4,
     backgroundColor: 'gray',
     borderRadius: 10,
   },
