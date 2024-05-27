@@ -37,7 +37,7 @@ const AnimatedSplashScreen = ({
           maxWidth: 400,
         }}
         // Find more Lottie files at https://lottiefiles.com/featured
-        source={require('@assets/lottie/netflix.json')}
+        source={require('@/assets/lottie/netflix.json')}
       />
     </View>
   );

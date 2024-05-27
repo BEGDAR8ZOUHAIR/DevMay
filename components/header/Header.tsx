@@ -60,6 +60,6 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
 		textAlign: 'center',
-		color: '#9b4521',
+    color: 'black',
   },
 });
