@@ -13,9 +13,9 @@ export default function HomeScreen() {
   return (
     <View style={styles.container}>
       <Header
-        leftButton={{ child: <Ionicons name="arrow-back-outline" size={30} color="black" />, onPress: () => navigation.goBack() }}
-        rightButton={{ child: <Octicons name="info" size={30} color="black" />, onPress: () => alert('Info') }}
-        middleButton={{ child: <Text style={{ fontSize: 25, fontFamily: 'SpaceMono' }}>Days</Text> }}
+        leftButton={{ child: <Ionicons name="arrow-back-outline" size={30} color="#fff" />, onPress: () => navigation.goBack() }}
+        rightButton={{ child: <Octicons name="info" size={30} color="#fff" />, onPress: () => alert('Info') }}
+        middleButton={{ child: <Text style={{ fontSize: 25 , color: '#fff' }}>Days</Text> }}
       />
       <FlatList
         data={days}
@@ -31,8 +31,9 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 50,
-    backgroundColor: '#fff',
+    paddingTop: 40,
+    padding: 5,
+    
   },
   content: {
     gap: 10,
@@ -42,3 +43,6 @@ const styles = StyleSheet.create({
     gap: 10,
   },
 });
+
+
+// AIzaSyBlq9I5WYjBOdB6NvT7LtjuMmQZ2221cZM

@@ -9,28 +9,11 @@ type DayListItemProps = {
 };
 
 export default function DayListItem({ day, imageUrl }: DayListItemProps) {
-  const [currentImageUrl, setCurrentImageUrl] = useState(imageUrl);
-  const opacity = useSharedValue(1);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      opacity.value = withTiming(0, { duration: 700, easing: Easing.inOut(Easing.ease) }, () => {
-        runOnJS(setCurrentImageUrl)(`https://picsum.photos/200/300?random=${Math.floor(Math.random() * 1000)}`);
-        opacity.value = withTiming(1, { duration: 100, easing: Easing.inOut(Easing.ease) });
-      });
-    }, 8000);
-
-    return () => clearInterval(interval);
-  }, []);
-
-  const animatedStyle = useAnimatedStyle(() => ({
-    opacity: opacity.value,
-  }));
 
   return (
     <Link href={`/day${day}`} asChild>
       <Pressable style={styles.box}>
-        <Animated.Image source={{ uri: currentImageUrl }} style={[styles.image, animatedStyle]} />
+        <Animated.Image source={{ uri: imageUrl }} style={styles.image} />
         <Text style={styles.text}>{day}</Text>
       </Pressable>
     </Link>

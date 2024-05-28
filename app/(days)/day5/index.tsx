@@ -25,7 +25,7 @@ const DayDetailsScreen = () => {
 			<MarkdownDisplay>{description}</MarkdownDisplay>
 			<View style={styles.button}>
 			<Link href="/day5/airbnb" asChild >
-        <Button  title="Go to Animation" />
+        <Button  title="Go to Airbnb" />
       </Link>
 			</View>
 		</View>
