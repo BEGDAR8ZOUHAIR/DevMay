@@ -21,8 +21,8 @@ import Animated, {
 const onboardingSteps = [
   {
     icon: 'snowflake',
-    title: 'Welcome #DEVember',
-    description: 'Daily React Native tutorials during December',
+    title: 'Welcome #DEVMay',
+    description: 'Daily React Native tutorials during #DEVMay',
   },
   {
     icon: 'people-arrows',
