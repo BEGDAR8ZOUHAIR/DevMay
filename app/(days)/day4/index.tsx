@@ -1,55 +1,81 @@
-import { View, Text, StyleSheet, Button } from 'react-native'
-import React from 'react'
-import Header from '@/components/header/Header';
-import { Ionicons, Octicons } from '@expo/vector-icons';
-import { Link, useNavigation, useRouter } from "expo-router";
+import { View, Text, StyleSheet, FlatList } from 'react-native';
+import React, { useMemo, useState } from 'react';
+import MapView from 'react-native-maps';
 import { Stack } from 'expo-router';
-import MarkdownDisplay from '@/components/day3/MarkdownDisplay';
+import apartments from '@/assets/data/day5/appartments.json';
+import CustomMarker from '@/components/day5/CustomMarker';
+import ApartmentListItem from '@/components/day5/ApartmentListItem';
 
+import BottomSheet, { BottomSheetFlatList } from '@gorhom/bottom-sheet';
 
-const description = `
-# Animation with React Native
-`;
+type Apartment = (typeof apartments)[0];
 
-const DayDetailsScreen = () => {
-	const router = useRouter();
-  const navigation = useNavigation();
-	return (
-		<View style={styles.container}>
-			<Stack.Screen options={{ headerShown: false }} />
-			<Header
-				leftButton={{ child: <Ionicons name="arrow-back-outline" size={30} color="#9b4521" />, onPress: () => navigation.goBack() }}
-				rightButton={{ child: <Octicons name="info" size={30} color="#9b4521" />, onPress: () => alert('Info') }}
-				middleButton={{ child: <Text style={{ fontSize: 25, fontFamily: 'SpaceMono' }}>Day 4</Text> }}
-			/>
-			<MarkdownDisplay>{description}</MarkdownDisplay>
-			<View style={styles.button}>
-			<Link href="/day4/animation" asChild >
-        <Button  title="Go to Animation" />
-      </Link>
-			</View>
-		</View>
-	)
+export default function AirbnbScreen() {
+  const [selectedApartment, setSelectedApartment] = useState<Apartment | null>(
+    null
+  );
+  const [mapRegion, setMapRegion] = useState({
+    latitude: 37.78825,
+    longitude: -122.4324,
+    latitudeDelta: 0.0922,
+    longitudeDelta: 0.0421,
+  });
+
+  // variables
+  const snapPoints = useMemo(() => [80, '50%', '90%'], []);
+
+  return (
+    <View>
+      <Stack.Screen options={{ headerShown: false }} />
+
+      <MapView  style={styles.map} region={mapRegion}>
+        {apartments.map((apartment) => (
+          <CustomMarker
+            key={apartment.id}
+            apartment={apartment}
+            onPress={() => setSelectedApartment(apartment)}
+          />
+        ))}
+      </MapView>
+
+      {/* Display selected Apartment */}
+      {selectedApartment && (
+        <ApartmentListItem
+          apartment={selectedApartment}
+          containerStyle={styles.selectedContainer}
+        />
+      )}
+
+      <BottomSheet index={0} snapPoints={snapPoints}>
+        <View style={{ flex: 1 }}>
+          <Text style={styles.listTitle}>Over {apartments.length} places</Text>
+          <BottomSheetFlatList
+            data={apartments}
+            contentContainerStyle={{ gap: 10, padding: 10 }}
+            renderItem={({ item }) => <ApartmentListItem apartment={item} />}
+          />
+        </View>
+      </BottomSheet>
+    </View>
+  );
 }
 
-export default DayDetailsScreen
-
 const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-    paddingTop: 50,
-		backgroundColor: '#fff',
-		
-	},
-	text: {
-		fontSize: 44,
-		fontWeight: 'bold',
-		fontFamily: 'AmaticSC_Bold',
-	},
-
-	button: {
-		bottom: 100
-
-	}
-
+  map: {
+    width: '100%',
+    height: '100%',
+  },
+  listTitle: {
+    textAlign: 'center',
+    fontFamily: 'InterSemi',
+    fontSize: 16,
+    marginVertical: 5,
+    marginBottom: 20,
+  },
+  selectedContainer: {
+    position: 'absolute',
+    bottom: 100,
+    right: 10,
+    left: 10,
+  },
 });

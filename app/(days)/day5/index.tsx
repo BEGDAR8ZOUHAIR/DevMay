@@ -8,7 +8,7 @@ import MarkdownDisplay from '@/components/day3/MarkdownDisplay';
 
 
 const description = `
-# Air bnb with React Native
+# Shake Animated View
 `;
 
 const DayDetailsScreen = () => {
@@ -38,7 +38,6 @@ const styles = StyleSheet.create({
 	container: {
 		flex: 1,
     paddingTop: 50,
-		backgroundColor: '#fff',
 		
 	},
 	text: {
