@@ -40,6 +40,7 @@
     "react-content-loader": "^7.0.2",
     "react-dom": "18.2.0",
     "react-native": "0.74.1",
+    "react-native-animated-ruler": "^1.1.1",
     "react-native-gesture-handler": "~2.16.1",
     "react-native-maps": "1.14.0",
     "react-native-markdown-display": "^7.0.2",
