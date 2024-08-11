@@ -8,15 +8,9 @@ const days = [...Array(24)].map((val, index) => index + 1);
 const imageUrls = [...Array(24)].map((_, index) => `https://picsum.photos/200/300?random=${index + 1}`);
 
 export default function HomeScreen() {
-  const navigation = useNavigation();
 
   return (
     <View style={styles.container}>
-      <Header
-        leftButton={{ child: <Ionicons name="arrow-back-outline" size={30} color="#fff" />, onPress: () => navigation.goBack() }}
-        rightButton={{ child: <Octicons name="info" size={30} color="#fff" />, onPress: () => alert('Info') }}
-        middleButton={{ child: <Text style={{ fontSize: 25 , color: '#fff' }}>Days</Text> }}
-      />
       <FlatList
         data={days}
         contentContainerStyle={styles.content}
