@@ -5,6 +5,7 @@ import * as SplashScreen from 'expo-splash-screen';
 import { useEffect } from 'react';
 import 'react-native-reanimated';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { PaperProvider } from 'react-native-paper';
 
 
 import { useColorScheme } from '@/hooks/useColorScheme';
@@ -15,9 +16,11 @@ SplashScreen.preventAutoHideAsync();
 export default function RootLayout() {
   const colorScheme = useColorScheme();
   const [loaded] = useFonts({
-    AmaticSC_Regular: require('../assets/fonts/AmaticSC-Regular.ttf'),
-    AmaticSC_Bold: require('../assets/fonts/AmaticSC-Bold.ttf'),
-    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
+    "Quicksand-Light": require("@/assets/fonts/Quicksand/Quicksand-Light.ttf"),
+    "Quicksand-Regular": require("@/assets/fonts/Quicksand/Quicksand-Regular.ttf"),
+    "Quicksand-Medium": require("@/assets/fonts/Quicksand/Quicksand-Medium.ttf"),
+    "Quicksand-Bold": require("@/assets/fonts/Quicksand/Quicksand-Bold.ttf"),
+    "Quicksand-SemiBold": require("@/assets/fonts/Quicksand/Quicksand-SemiBold.ttf"),
   });
 
   useEffect(() => {
@@ -32,11 +35,13 @@ export default function RootLayout() {
 
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
-      <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-        <Stack>
-          <Stack.Screen name="index" options={{ headerShown: false }} />
-        </Stack>
-      </ThemeProvider>
+      <PaperProvider>
+        <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+          <Stack>
+            <Stack.Screen name="index" options={{ headerShown: false }} />
+          </Stack>
+        </ThemeProvider>
+      </PaperProvider>
     </GestureHandlerRootView>
 
   );
