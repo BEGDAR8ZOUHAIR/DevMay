@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
 		backgroundColor: '#F4F6F8',
 		justifyContent: 'center',
 		alignItems: 'center',
-		margin: 4,
+		margin: 3,
 	},
 	dialpadText: {
 		color: '#2D3748',
